@@ -11,12 +11,12 @@ defmodule Timezones.MixProject do
       build_path: "../../_build",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.9",
+      elixir: "~> 1.14",
       deps: deps(),
       docs: docs(),
       description: description(),
       package: package(),
-      source_url: "https://github.com/lau/tzdata"
+      source_url: "https://github.com/mfkuntz/timezones"
     ]
   end
 
@@ -60,8 +60,8 @@ defmodule Timezones.MixProject do
   defp package do
     %{
       licenses: ["MIT"],
-      maintainers: ["Lau Taarnskov"],
-      links: %{"GitHub" => "https://github.com/lau/tzdata"},
+      maintainers: ["Matthew Kuntz"],
+      links: %{"GitHub" => "https://github.com/mfkuntz/timezones"},
       files: ~w(lib priv mix.exs README* LICENSE*
                  CHANGELOG*)
     }

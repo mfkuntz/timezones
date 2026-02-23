@@ -1,9 +1,9 @@
 Timezones
 ======
 
-Timezones. The [timezone database](https://www.iana.org/time-zones) in Elixir.
+Timezones. The [IANA timezone database](https://www.iana.org/time-zones) in Elixir.
 
-Extracted from the [Calendar](https://github.com/lau/calendar) library.
+Forked from [lau/tzdata](https://github.com/lau/tzdata).
 
 As of version 1.1.3 the tz release 2025a is included in the package.
 
@@ -13,12 +13,12 @@ The tz release version in use can be verified with the following function:
 
 ```elixir
 iex> Timezones.iana_version
-"2024b"
+"2025a"
 ```
 
 ## Getting started
 
-To use the Timezones library with Elixir 1.8+, add it to the dependencies in your mix file:
+Add it to the dependencies in your mix file:
 
 ```elixir
 defp deps do
@@ -31,9 +31,7 @@ This can be done by putting the following line in the config file of your applic
 
     config :elixir, :time_zone_database, Timezones.TimeZoneDatabase
 
-That's it!
-
-That allows you to [use the Elixir standard library to use Timezones to do time zone calculations](https://hexdocs.pm/elixir/DateTime.html#content).
+That allows you to [use the Elixir standard library to do time zone calculations](https://hexdocs.pm/elixir/DateTime.html#content).
 One example is getting the current time in a certain time zone:
 
 ```elixir
@@ -61,10 +59,10 @@ config :timezones, :data_dir, "/etc/elixir_timezones_data"
 ```
 
 Add the `release_ets` directory from `priv` to that directory
-containing the `20xxx.ets` file that ships with this library.
+containing the `.ets` file that ships with this library.
 
 For instance with this config: `config :timezones, :data_dir, "/etc/elixir_timezones_data"`
-an `.ets` file such as `/etc/elixir_timezones_data/release_ets/2017b.ets` should be present.
+an `.ets` file such as `/etc/elixir_timezones_data/release_ets/2025a.v2.ets` should be present.
 
 ## Automatic data updates
 
@@ -82,33 +80,14 @@ in the release_ets sub-dir of the "data_dir" (see the "Data directory and releas
 When IANA releases new versions of the time zone data, this Timezones library can be used to generate
 a new .ets file containing the new data.
 
-## Changes from 0.1.x to 0.5.x
-
-The 0.5.1+ versions uses ETS tables and automatically polls the IANA
-servers for updated data. When a new version of the timezone database
-is available, it is automatically downloaded and used.
-
-For use with [Calendar](https://github.com/lau/calendar) you can still
-specify tzdata ~> 0.1.7 in your mix.exs file in case you experience problems
-using version ~> 0.5.20
-
 ## Hackney dependency and security
 
-Timezones depends on Hackney in order to do HTTPS requests to get new updates. This is done because Erlang's built in HTTP client `httpc` does not verify SSL certificates when doing HTTPS requests. Hackney verifies the certificate of IANA when getting new tzdata releases from IANA.
-
-## Documentation
-
-Documentation can be found at http://hexdocs.pm/tzdata/
-
-## When new timezone data is released
-
-IANA releases new versions of the [timezone database](https://www.iana.org/time-zones) frequently.
-
-For users of Timezones version 0.5.x+ the new database will automatically
-be downloaded, parsed, saved and used in place of the old data.
+Timezones depends on Hackney in order to do HTTPS requests to get new updates. This is done because Erlang's built in HTTP client `httpc` does not verify SSL certificates when doing HTTPS requests. Hackney verifies the certificate of IANA when getting new tz releases from IANA.
 
 ## License
 
 The Timezones Elixir library is released under the MIT license. See the LICENSE file.
 
-The tz database files (found in the source_data directory of early versions) is public domain.
+Originally created by [Lau Taarnskov](https://github.com/lau/tzdata).
+
+The tz database files are public domain.
