@@ -133,7 +133,7 @@ defmodule Timezones do
 
       iex> Timezones.periods("Europe/Madrid") |> elem(1) |> Enum.take(1)
       [%{from: %{standard: :min, utc: :min, wall: :min}, std_off: 0,
-        until: %{standard: 59989763760, utc: 59989764644, wall: 59989763760},
+        until: %{standard: 59989765516, utc: 59989766400, wall: 59989765516},
         utc_off: -884, zone_abbr: "LMT"}]
       iex> Timezones.periods("Not existing")
       {:error, :not_found}
