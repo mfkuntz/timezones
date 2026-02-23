@@ -1,4 +1,4 @@
-# Changelog for Tzdata
+# Changelog for Timezones
 
 ## [1.1.3] - 2025-03-05
 
